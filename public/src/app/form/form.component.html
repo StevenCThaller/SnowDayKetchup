@@ -1,0 +1,9 @@
+<form>
+  <label for="title">Title: </label>
+  <input type="text" name="newTaskFromHome.title" [(ngModel)]="newTaskFromHome.title">
+  <br>
+  <label for="description">Description: </label>
+  <textarea name="newTaskFromHome.description" [(ngModel)]="newTaskFromHome.description" cols="20" rows="3"></textarea>
+  <br>
+  <button (click)="sendItToHome()">Create!</button>
+</form>

@@ -31,7 +31,8 @@ module.exports = {
             })
     },
     updateTask: (req,res) => {
-        Task.findOneAndUpdate({_id: req.params.id}, req.body, { runValidators: true, new: true })
+        let { _id, ...restOfData } = req.body
+        Task.findOneAndUpdate({_id: req.params.id}, restOfData, { runValidators: true, new: true })
             .then(data => {
                 res.json({ message: "success", results: data});
 

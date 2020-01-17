@@ -2,5 +2,21 @@
 
 <ul>
   <li *ngFor="let task of allTasks">{{ task.title }} --> Is this shit done? {{ task.completed }} | <button
-      (click)="getDetails(task)">Show me More!</button></li>
+      (click)="getDetails(task)">Show me More!</button><button (click)="letsEdit(task)">Edit This Task</button>
+    <div *ngIf="editing === task._id">
+      <h2>Edit a Task</h2>
+      <span *ngIf="wrong">You wrong</span>
+      <br>
+      <app-form (toSendToHome)="editTask($event)" [newTaskFromHome]="taskToEdit"></app-form>
+    </div>
+  </li>
 </ul>
+<br>
+<button (click)="letsCreate()">Add Task</button>
+<br>
+<div *ngIf="editing === ''">
+  <h2>Make a new task</h2>
+  <span *ngIf=" wrong">You wrong</span>
+  <br>
+  <app-form (toSendToHome)="createTask($event)" [newTaskFromHome]="newTask"></app-form>
+</div>
